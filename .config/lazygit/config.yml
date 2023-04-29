@@ -1,0 +1,17 @@
+os:
+  editCommand: 'floaterm'
+
+keybinding:
+  universal:
+    return: '<c-\>'
+gui:
+  showIcons: true
+  selectedLineBgColor:
+    - underline
+  selectedRangeBgColor:
+    - underline
+git:
+  paging:
+    colorArg: never
+    pager: delta --dark --paging=never
+  branchLogCmd: "git log --graph --color=always --abbrev-commit --decorate --date=relative --pretty=medium --oneline {{branchName}} --"
