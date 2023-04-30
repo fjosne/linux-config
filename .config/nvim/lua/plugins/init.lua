@@ -22,5 +22,8 @@ return {
         }
     },
     'dinhhuy258/git.nvim',
-    'numToStr/FTerm.nvim'
+    'numToStr/FTerm.nvim',
+    'steelsojka/pears.nvim',
+    'tpope/vim-surround',
+    'terrortylor/nvim-comment'
 }
