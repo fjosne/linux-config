@@ -1,5 +1,5 @@
-local lsp = require('lsp-zero').preset({})
 
+local lsp = require('lsp-zero').preset({})
 lsp.ensure_installed({ 'lua_ls', 'tsserver', 'eslint' })
 
 local cmp = require('cmp')
@@ -15,6 +15,15 @@ local cmp_mappings = lsp.defaults.cmp_mappings({
 lsp.setup_nvim_cmp({
     mapping = cmp_mappings
 })
+
+lsp.set_sign_icons({
+    error = '',
+    warn = '',
+    hint = '',
+    info = ''
+})
+
+a = 0
 
 lsp.on_attach(function (client, bufnr)
     local opts = { buffer = bufnr, remap = false }
