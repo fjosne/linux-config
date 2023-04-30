@@ -5,3 +5,5 @@ require('pears').setup(
 )
 
 require('nvim_comment').setup()
+
+require('dev.lsp')
