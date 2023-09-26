@@ -3,7 +3,7 @@ os:
 
 keybinding:
   universal:
-    return: '<c-\>'
+    return: '<c-c>'
 gui:
   showIcons: true
   selectedLineBgColor:
