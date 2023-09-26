@@ -47,4 +47,10 @@ return {
             {'L3MON4D3/LuaSnip'},     -- Required
         }
     },
+    { "lukas-reineke/indent-blankline.nvim" },
+    {
+        'ggandor/leap.nvim', dependencies = { 'tpope/vim-repeat' }, config = function()
+            require('leap').add_default_mappings()
+        end,
+    },
 }
