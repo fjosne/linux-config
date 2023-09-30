@@ -1,4 +1,7 @@
 local function lsp_config()
+    local telescope = require('telescope.builtin')
+    local open_at_cursor = require('telescope.themes').get_cursor()
+
     local lsp = require('lsp-zero').preset({})
     lsp.ensure_installed({ 'lua_ls', 'tsserver', 'eslint' })
 
@@ -25,14 +28,16 @@ local function lsp_config()
 
     lsp.on_attach(function (client, bufnr)
         local opts = { buffer = bufnr, remap = false }
-
-        vim.keymap.set('n', 'gd', function() vim.lsp.buf.definition() end, opts)
+        vim.keymap.set('n', 'gd', function() telescope.lsp_definitions(open_at_cursor) end, opts)
+        vim.keymap.set('n', 'gt', function() telescope.lsp_type_definitions(open_at_cursor) end, opts)
         vim.keymap.set('n', 'K', function() vim.lsp.buf.hover() end, opts)
-        vim.keymap.set('n', '<leader>vws', function() vim.lsp.buf.workspace_symbol() end, opts)
-        vim.keymap.set('n', '<leader>vd', function() vim.diagnostic.open_float() end, opts)
-        vim.keymap.set('n', '[d', function() vim.diagnostic.goto_prev() end, opts)
+        vim.keymap.set('n', '<leader>vws', function() telescope.lsp_dynamic_workspace_symbols(open_at_cursor) end, opts)
+        vim.keymap.set('n', '<leader>vs', function() telescope.lsp_document_symbols() end, opts)
+        vim.keymap.set('n', '<leader>vd', function() telescope.diagnostics(open_at_cursor) end, opts)
+        vim.keymap.set('n', 'd[', function() vim.diagnostic.goto_prev() end, opts)
+        vim.keymap.set('n', 'd]', function() vim.diagnostic.goto_next() end, opts)
         vim.keymap.set('n', '<leader>ca', function() vim.lsp.buf.code_action() end, opts)
-        vim.keymap.set('n', '<leader>vr', function() vim.lsp.buf.references() end, opts)
+        vim.keymap.set('n', '<leader>vr', function() telescope.lsp_references(open_at_cursor) end, opts)
         vim.keymap.set('n', '<leader>rn', function() vim.lsp.buf.rename() end, opts)
         vim.keymap.set('n', 'H', function() vim.lsp.buf.signature_help() end, opts)
     end)
@@ -62,6 +67,12 @@ return {
                 build = function()
                     pcall(vim.cmd, 'MasonUpdate')
                 end,
+                opts = {
+                    ensure_installed = {
+                        'eslint_d',
+                        'prettierd'
+                    }
+                }
             },
             {'williamboman/mason-lspconfig.nvim'}, -- Optional
 
