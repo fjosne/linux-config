@@ -19,6 +19,7 @@ set.guicursor        	= ''        	-- no cursor style (remain box)
 set.signcolumn       	= 'yes'
 set.colorcolumn      	= '80'
 set.hlsearch	     	= false		    -- only highlight current match
+set.ls                  = 0
 
 -- vim.cmd('set nohlsearch')
 

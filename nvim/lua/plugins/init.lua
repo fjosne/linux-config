@@ -8,10 +8,15 @@ return {
             vim.cmd([[colorscheme gruvbox]])
         end,
     },
+    { 'Mofiqul/dracula.nvim' },
     'voldikss/vim-floaterm',
     {
     'nvim-telescope/telescope.nvim', tag = '0.1.1',
       dependencies = { 'nvim-lua/plenary.nvim' }
+    },
+    {
+        "nvim-telescope/telescope-file-browser.nvim",
+        dependencies = { "nvim-telescope/telescope.nvim", "nvim-lua/plenary.nvim" }
     },
     { 'nvim-treesitter/nvim-treesitter', build = ':TSUpdate' },
 
