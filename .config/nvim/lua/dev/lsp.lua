@@ -1,4 +1,3 @@
-
 local lsp = require('lsp-zero').preset({})
 lsp.ensure_installed({ 'lua_ls', 'tsserver', 'eslint' })
 
@@ -36,5 +35,15 @@ lsp.on_attach(function (client, bufnr)
     vim.keymap.set('n', '<leader>rn', function() vim.lsp.buf.rename() end, opts)
     vim.keymap.set('n', 'H', function() vim.lsp.buf.signature_help() end, opts)
 end)
+
+require('lspconfig').lua_ls.setup {
+    settings = {
+        Lua = {
+            diagnostics = {
+                globals = { 'vim' }
+            }
+        }
+    }
+}
 
 lsp.setup()
